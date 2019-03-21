@@ -23,8 +23,7 @@ class MailThread(models.AbstractModel):
             fetchmail_server_id = self.env.context.get('fetchmail_server_id')
             if not fetchmail_server_id:
                 raise ve
-            fetchmail_server = self.pool['fetchmail.server'].browse(
-                fetchmail_server_id)
+            fetchmail_server = self.env['fetchmail.server'].browse(fetchmail_server_id)
             if not fetchmail_server.error_notice_template_id:
                 raise ve
             self.env.context['sender_message'] = message
